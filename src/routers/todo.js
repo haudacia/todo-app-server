@@ -17,9 +17,20 @@ const todoRouter = express.Router();
 
 todoRouter.get('/todo', (req, res) => {
   //devolver todos los "todos" que hay en el array con formato JSON.
+  res.json(todos);
+
 });
 
 todoRouter.post('/todo', (req, res) => {
+  const newData = req.body;
+  const newTask = {
+    id: todos.length + 1,
+    text: newData.text,
+    fecha: new Date(newData.fecha),
+    done: false
+  }
+  todos.push(newTask);
+  res.status(201).json(newTask);
   
   //crear un nuevo objeto con estructura {id, text, fecha, done} con los datos que vienen en el BODY de la Request y meterlos dentro de el array.
   //el nuevo objeto debe tener como id un numero mas que el numero actual de elementos guardados en el array.
