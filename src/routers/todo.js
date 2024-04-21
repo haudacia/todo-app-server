@@ -51,7 +51,13 @@ Si con Insomnia o Postman hicisemos una peticion GET a la ruta /todo/12, está s
 
 */
 todoRouter.get('/todo/:id',  (req, res) => {
-
+  const requestedIdNum = parseInt(req.params.id);
+  const matchingTask = todos.find((task) => task.id === requestedIdNum);
+  if (matchingTask) {
+    res.status(200).json(matchingTask)
+  } else {
+    res.status(404).send(`Task with ID ${requestedIdNum} doesn't exist :T`)
+  }
   //recogemos el valor de la variable del path llamada "id" y lo transformarlo a un numero (todos nuestros ids son numericos).
   //cualquier valor que recogemos de req.params será siempre un String. Por eso lo debemos convertir a numero.
 
@@ -61,10 +67,37 @@ todoRouter.get('/todo/:id',  (req, res) => {
   //Si no hemos econtrado un TODO o no nos han pasado un id en la ruta, devolvemos un 404.
 });
 
-
 // MISSING '/todo/:id' PATCH
 
 todoRouter.patch('/todo/:id',  (req, res) => {
+  const requestedIdNum = parseInt(req.params.id);
+  const taskToUpdateIndex = todos.findIndex((task) => task.id === requestedIdNum);
+  const newData = req.body;
+  if (taskToUpdateIndex !== -1) {
+    const updatedTask = { ...todos[taskToUpdateIndex], ...newData };
+    todos[taskToUpdateIndex] = updatedTask;
+    res.status(200).send(todos)
+  } else {
+    res.status(404).send(`Couldn't find a task with ID ${requestedIdNum} to be updated`)
+  }
+
+  /* previous unsuccessful attempt for patch:
+  todoRouter.patch('/todo/:id',  (req, res) => {
+  const requestedIdNum = parseInt(req.params.id);
+  const taskToUpdateIndex = todos.findIndex((task) => task.id === requestedIdNum);
+  const newData = req.body;
+  if (taskToUpdateIndex !== -1) {
+    Object.keys(todos).forEach((key => {
+      if (todos[taskToUpdateIndex].hasOwnProperty(key)) {
+        todos[taskToUpdateIndex][key] = newData[key];
+        res.status(200).send(todos)
+      }
+    }))
+  } else {
+    res.status(404).send(`There is no task with ID ${requestedIdNum} to be updated`)
+  }
+  */
+  
   //recogemos el valor de la variable del path llamada "id" y lo transformarlo a un numero (todos nuestros ids son numericos).
   //cualquier valor que recogemos de req.params será siempre un String. Por eso lo debemos convertir a numero.
   
@@ -76,8 +109,6 @@ todoRouter.patch('/todo/:id',  (req, res) => {
 });
 
 // MISSING '/todo/:id' DELETE
-
-
 todoRouter.delete('/todo/:id',  (req, res) => {
   //recogemos el valor de la variable del path llamada "id" y lo transformarlo a un numero (todos nuestros ids son numericos).
   //cualquier valor que recogemos de req.params será siempre un String. Por eso lo debemos convertir a numero.
