@@ -7,13 +7,7 @@ const mongo = require('./data_mongo/index');
 
 app.use(express.json());
 // Allow specific origin(s)
-app.use(cors({
-    origin: [
-        'http://localhost:3000/',
-        'http://todo-app-server-1.onrender.com'
-
-    ]
-}));
+app.use(cors());
 app.use('/', router);
 
 connectDB().then(() => console.log('Connected to database!'));
