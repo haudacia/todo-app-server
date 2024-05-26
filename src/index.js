@@ -1,13 +1,19 @@
 const express = require('express');
 const { connectDB } = require('./data_mongo');
-const app = express();
 const cors = require('cors');
 const router = require('./routes/index');
 const mongo = require('./data_mongo/index');
 
+const app = express();
 app.use(express.json());
 // Allow specific origin(s)
-app.use(cors());
+app.use(cors(
+    {
+        origin: [""],
+        methods: ["POST", "GET", "PATCH", "DELETE"],
+        credentials: true
+    }
+));
 app.use('/', router);
 
 connectDB().then(() => console.log('Connected to database!'));
@@ -18,6 +24,4 @@ const server = app.listen(port, () => {
     console.log('Server is up and running in port 3000⚡');
 });
 module.exports = { app, server };
-
-
 
