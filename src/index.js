@@ -11,14 +11,14 @@ app.use(cors());
 app.use(cors({
     origin: [
         'https://todo-app-server-1.onrender.com',
-        'https://todo-app-3brv.onrender.com/'
+        'https://localhost:3000/'
     ]
 }));
 app.use('/', router);
 
 connectDB().then(() => console.log('Connected to database!'));
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
     console.log('Server is up and running in port 3000⚡');
