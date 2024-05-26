@@ -8,6 +8,11 @@ const app = express();
 app.use(express.json());
 // Allow specific origin(s)
 app.use(cors(
+    {
+        origin: ["https://todo-app-server-cc9x.onrender.com"],
+        methods: ["POST", "GET", "PATCH", "DELETE"],
+        allowedHeaders: ["Content-Type", "Authorization"]
+    }
 ));
 
 app.use(function (req, res, next) {
