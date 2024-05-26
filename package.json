@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "install": "npm install"
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "Hadassa Lima <hadassa.m.lima@gmail.com>",
