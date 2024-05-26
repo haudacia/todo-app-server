@@ -10,8 +10,9 @@ app.use(cors());
 // Allow specific origin(s)
 app.use(cors({
     origin: [
-        'https://todo-app-server-1.onrender.com',
-        'http://localhost:3000/'
+        'http://localhost:3000/',
+        'https://todo-app-server-1.onrender.com'
+
     ]
 }));
 app.use('/', router);
