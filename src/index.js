@@ -9,9 +9,8 @@ app.use(express.json());
 // Allow specific origin(s)
 app.use(cors({
     origin: [
-        'http://localhost:3000/',
-        'https://todo-app-server-1.onrender.com'
 
+        'https://todo-app-server-1.onrender.com'
     ]
 }));
 app.use('/', router);
