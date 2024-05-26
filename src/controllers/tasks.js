@@ -12,8 +12,10 @@ const getTasks = async (req, res) => {
 
 //mongoDB and mongoose:
 const getTasks = async (req, res) => {
-  const tasks = await Task.find();
-  res.json(tasks);
+  const tasks = [
+    { id: 1, title: 'Task 1' },
+    { id: 2, title: 'Task 2' },
+  ]; res.json(tasks);
 };
 
 const getTask = async (req, res) => {
