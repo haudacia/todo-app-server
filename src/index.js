@@ -11,7 +11,7 @@ app.use(cors());
 app.use(cors({
     origin: [
         'https://todo-app-server-1.onrender.com',
-        'https://localhost:3000/'
+        'http://localhost:3000/'
     ]
 }));
 app.use('/', router);
