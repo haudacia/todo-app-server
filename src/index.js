@@ -6,12 +6,11 @@ const router = require('./routes/index');
 const mongo = require('./data_mongo/index');
 
 app.use(express.json());
-app.use(cors());
 // Allow specific origin(s)
 app.use(cors({
     origin: [
         'http://localhost:3000/',
-        'https://todo-app-server-1.onrender.com'
+        'http://todo-app-server-1.onrender.com'
 
     ]
 }));
