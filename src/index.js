@@ -9,7 +9,7 @@ app.use(express.json());
 // Allow specific origin(s)
 app.use(cors(
     {
-        origin: ["https://todo-app-3brv.onrender.com"],
+        origin: ["https://todo-app-server-cc9x.onrender.com"],
         methods: ["POST", "GET", "PATCH", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true
@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
 })
 // Middleware para lidar com requisições preflight
 app.options('*', cors({
-    origin: ["https://todo-app-3brv.onrender.com"],
+    origin: ["https://todo-app-server-cc9x.onrender.com"],
     methods: ["POST", "GET", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
