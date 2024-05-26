@@ -10,8 +10,8 @@ app.use(cors());
 // Allow specific origin(s)
 app.use(cors({
     origin: [
-        'https://todo-app-rho-one-83.vercel.app/',
-        'https://todo-app-server-jet.vercel.app/'
+        'https://todo-app-server-1.onrender.com',
+        'https://todo-app-3brv.onrender.com/'
     ]
 }));
 app.use('/', router);
