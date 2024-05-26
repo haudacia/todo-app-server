@@ -32,7 +32,7 @@ app.use('/', router);
 
 connectDB().then(() => console.log('Connected to database!'));
 
-const port = process.env.REACT_APP_URL || 3000;
+const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
     console.log('Server is up and running in port 3000⚡');
