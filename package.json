@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "npm install",
-    "start": "node src/index.js",
-    "install-client": "cd client && npm install",
-    "build-client": "cd client && npm run build",
-    "start-client": "cd client && npm run start"
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "Hadassa Lima <hadassa.m.lima@gmail.com>",
