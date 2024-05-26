@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install-server": "npm install",
-    "start-server": "node src/index.js",
+    "start": "node src/index.js",
     "install-client": "cd client && npm install",
     "build-client": "cd client && npm run build",
     "start-client": "cd client && npm run start"
