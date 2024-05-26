@@ -11,8 +11,7 @@ app.use(cors(
     {
         origin: ["https://todo-app-server-cc9x.onrender.com"],
         methods: ["POST", "GET", "PATCH", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-        credentials: true
+        allowedHeaders: ["Content-Type", "Authorization"]
     }
 ));
 
@@ -25,8 +24,7 @@ app.use(function (req, res, next) {
 app.options('*', cors({
     origin: ["https://todo-app-server-cc9x.onrender.com"],
     methods: ["POST", "GET", "PATCH", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use('/', router);
 
