@@ -11,9 +11,17 @@ app.use(cors(
     {
         origin: ["https://todo-app-3brv.onrender.com"],
         methods: ["POST", "GET", "PATCH", "DELETE"],
+        allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true
     }
 ));
+// Middleware para lidar com requisições preflight
+app.options('*', cors({
+    origin: ["https://todo-app-3brv.onrender.com"],
+    methods: ["POST", "GET", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}));
 app.use('/', router);
 
 connectDB().then(() => console.log('Connected to database!'));
