@@ -11,7 +11,7 @@ app.use(cors());
 app.use(cors({
     origin: [
         'https://todo-app-rho-one-83.vercel.app/',
-        'https://todo-app-server-two.vercel.app/'
+        'https://todo-app-server-jet.vercel.app/'
     ]
 }));
 app.use('/', router);
