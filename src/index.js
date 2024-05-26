@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
 // Middleware para lidar com requisições preflight
 app.options('*', cors({
     origin: ["https://todo-app-server-cc9x.onrender.com"],
-    methods: ["POST", "GET", "PATCH", "DELETE"],
+    methods: ["POST", "GET", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use('/', router);
