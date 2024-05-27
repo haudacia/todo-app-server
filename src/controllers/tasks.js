@@ -59,7 +59,7 @@ const updateTask = async (req, res) => {
 };
 
 const deleteTask = async (req, res) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
   console.log(`Received ID to delete: ${id}`);
 
   try {
