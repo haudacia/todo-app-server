@@ -60,6 +60,8 @@ const updateTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   const { id } = req.params.id;
+  console.log(`Received ID to delete: ${id}`);
+
   try {
     const deletedTask = await Task.findByIdAndDelete(id);
     if (deletedTask) {
