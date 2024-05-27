@@ -3,19 +3,14 @@ const Task = require('../data_mongo/schemas/task');
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
-    // Convertendo ObjectId para string
-    const tasksWithStringId = tasks.map(task => ({
-      ...task.toObject(),
-      _id: task._id.toString()
-    }));
-    res.json(tasksWithStringId);
+    res.json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
 const getTask = async (req, res) => {
-  const requestedId = parseInt(req.params._id);
+  const requestedId = parseInt(req.params._id.toString());
   try {
     const task = await Task.findById(requestedId);
     if (task) {
@@ -44,7 +39,8 @@ const createTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  const requestedId = parseInt(req.params._id);
+  console.log(Task._id, req.params._id.toString())
+  const requestedId = parseInt(req.params._id.toString());
   const body = req.body;
   try {
     const updatedTask = await Task.findByIdAndUpdate(requestedId, body, { new: true });
