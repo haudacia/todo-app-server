@@ -16,7 +16,6 @@ app.use(cors());
 //     credentials: true
 // }));
 
-// // Middleware para definir cabeçalhos CORS manualmente, se necessário
 // app.use((req, res, next) => {
 //     res.header("Access-Control-Allow-Origin", "https://todo-app-3brv.onrender.com");
 //     res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -24,6 +23,7 @@ app.use(cors());
 //     res.header("Access-Control-Allow-Credentials", "true");
 //     next();
 // });
+
 
 app.use('/', router);
 
