@@ -8,18 +8,9 @@ const app = express();
 app.use(express.json());
 // Allow specific origin(s)
 // Configuração do CORS
-const allowedOrigins = ["https://todo-app-3brv.onrender.com"];
 
 app.use(cors({
-    origin: allowedOrigins,
-    methods: ["POST", "GET", "PATCH", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}));
-
-// Middleware para lidar com requisições preflight
-app.options('*', cors({
-    origin: allowedOrigins,
+    origin: "https://todo-app-3brv.onrender.com",
     methods: ["POST", "GET", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
@@ -27,7 +18,7 @@ app.options('*', cors({
 
 // Middleware para definir cabeçalhos CORS manualmente, se necessário
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", allowedOrigins);
+    res.header("Access-Control-Allow-Origin", "https://todo-app-3brv.onrender.com");
     res.header("Access-Control-Allow-Headers", "Content-Type");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Credentials", "true");
