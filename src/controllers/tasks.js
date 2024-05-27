@@ -30,6 +30,7 @@ const createTask = async (req, res) => {
     date: new Date(body.date),
     done: false,
   });
+
   try {
     const savedTask = await newTask.save();
     res.status(201).json(savedTask);
