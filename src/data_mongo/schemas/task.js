@@ -5,9 +5,10 @@ const taskSchema = new Schema({
     date: {
         type: Date,
         set: value => value ? value : null
-    }, done: { type: Boolean, default: false }
+    },
+    done: { type: Boolean, default: false }
 })
 
 const Task = model('task', taskSchema);
 
-module.exports = Task;  
+module.exports = Task;

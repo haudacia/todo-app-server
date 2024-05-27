@@ -40,11 +40,14 @@ const createTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  console.log(Task._id, req.params._id.toString())
-  const requestedId = parseInt(req.params._id.toString());
-  const body = req.body;
   try {
-    const updatedTask = await Task.findByIdAndUpdate(requestedId, body, { new: true });
+    const { id } = req.params.id;
+    const { text, date } = req.body;
+    const updatedTask = await Task.findByIdAndUpdate(id, {
+      text: text,
+      date: date
+      //done: updatedStatus //add later, must incorporate updateTaskStatus to handleUpdateTask.
+    }, { new: true });
     if (updatedTask) {
       res.status(200).json(updatedTask);
     } else {
@@ -56,9 +59,9 @@ const updateTask = async (req, res) => {
 };
 
 const deleteTask = async (req, res) => {
-  const requestedId = parseInt(req.params._id);
+  const { id } = req.params;
   try {
-    const deletedTask = await Task.findByIdAndDelete(requestedId);
+    const deletedTask = await Task.findByIdAndDelete(id);
     if (deletedTask) {
       res.status(204).send();
     } else {
