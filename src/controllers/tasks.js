@@ -24,18 +24,18 @@ const getTask = async (req, res) => {
 };
 
 const createTask = async (req, res) => {
-  const body = req.body;
-  const newTask = new Task({
-    text: body.text,
-    date: new Date(body.date),
-    done: false,
-  });
-
   try {
-    const savedTask = await newTask.save();
-    res.status(201).json(savedTask);
+    const { text, date } = req.body;
+    const newTask = new Task({
+      text,
+      date,
+    });
+
+    await newTask.save();
+    res.status(201).json(newTask);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error('Error creating task:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
