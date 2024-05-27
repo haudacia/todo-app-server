@@ -17,11 +17,13 @@ app.use(cors(
     }
 ));
 
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With')
-    next() // náo entendi mas coloquei isso aqui (de algum forum
-})
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://todo-app-3brv.onrender.com");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
 // Middleware para lidar com requisições preflight (??)
 app.options('*', cors({
     origin: ["https://todo-app-server-cc9x.onrender.com"],//url render backend
