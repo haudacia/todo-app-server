@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Credentials", "true");
     next();
-});
+});]
 // Middleware para lidar com requisições preflight (??)
 app.options('*', cors({
     origin: ["https://todo-app-server-cc9x.onrender.com"],//url render backend
