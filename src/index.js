@@ -24,7 +24,6 @@ app.use(cors());
 //     next();
 // });
 
-
 app.use('/', router);
 
 connectDB().then(() => console.log('Connected to database!'));
